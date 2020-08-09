@@ -1,0 +1,13 @@
+<ng-container>
+  <div class="header">
+    <app-header></app-header>
+  </div>
+  <div class="container p-5 main">
+    <router-outlet></router-outlet>
+  </div>
+  <footer class="footer bg-primary">
+    <a [routerLink]="['/submission']" class="text-white btn"
+      >View all Submissions</a
+    >
+  </footer>
+</ng-container>

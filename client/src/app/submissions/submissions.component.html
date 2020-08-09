@@ -1,0 +1,21 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Email</th>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of startups; let indexOfelement = index">
+      <tr>
+        <th scope="row">{{ indexOfelement + 1 }}</th>
+        <td>
+          <a [routerLink]="['/view', item.id]">{{ item?.email }}</a>
+        </td>
+        <td>{{ item?.first_name }}</td>
+      </tr>
+    </tbody>
+  </table>
+  {{ view | json }}
+</div>

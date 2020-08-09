@@ -1,0 +1,6 @@
+footer {
+  height: 3em;
+}
+.main {
+  min-height: 65vh !important;
+}

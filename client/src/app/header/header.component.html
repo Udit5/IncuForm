@@ -1,0 +1,16 @@
+<nav class="bg-primary">
+  <a class="navbar-brand text-white logo px-5 py-3" [routerLink]="['/']"
+    >IncuForm</a
+  >
+  <div class="navbar-text text-white w-100 text-center">
+    <h2>We're Accepting new Ideas!</h2>
+    <a>Fill the form and be the new creator!</a>
+  </div>
+  <button
+    *ngIf="isLoggedIn()"
+    class="btn btn-danger float-right mx-3"
+    (click)="onlogout()"
+  >
+    Logout
+  </button>
+</nav>

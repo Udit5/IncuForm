@@ -1,0 +1,393 @@
+<div class="d-flex justify-content-center align-items-center w-100">
+  <form
+    class="w-75 registration-form text-secondary"
+    [formGroup]="registerForm"
+    (submit)="onSubmit()"
+  >
+    <div class="form-group row">
+      <div class="col-12 col-sm-6">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="First name"
+          formControlName="first_name"
+          [ngClass]="{ 'is-invalid': submitted && h.first_name.errors }"
+        />
+        <div *ngIf="submitted && h.first_name.errors" class="text-warning">
+          <div>
+            First Name is required
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6">
+        <input
+          type="text"
+          class="form-control"
+          name="last_name"
+          placeholder="Last name"
+          formControlName="last_name"
+          [ngClass]="{ 'is-invalid': submitted && h.last_name.errors }"
+        />
+        <div *ngIf="submitted && h.last_name.errors" class="text-warning">
+          <div>
+            Last Name is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row mt-4">
+      <div class="col-12 col-sm-6">
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          placeholder="Email"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted && h.email.errors }"
+        />
+      </div>
+      <div class="col-12 col-sm-6">
+        <input
+          type="text"
+          name="phone"
+          class="form-control"
+          placeholder="Phone"
+          formControlName="phone"
+          [ngClass]="{ 'is-invalid': submitted && h.phone.errors }"
+        />
+        <div *ngIf="submitted && h.phone.errors" class="text-warning">
+          <div>
+            phone no. is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row mt-4">
+      <div class="col-12 col-sm-6">
+        <input
+          type="text"
+          class="form-control"
+          name="company_name"
+          placeholder="Company Name"
+          formControlName="company_name"
+          [ngClass]="{ 'is-invalid': submitted && h.company_name.errors }"
+        />
+        <div *ngIf="submitted && h.company_name.errors" class="text-danger">
+          <div>
+            company name is required
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6">
+        <input
+          type="text"
+          class="form-control"
+          name="website_url"
+          placeholder="Website URL"
+          formControlName="website_url"
+          [ngClass]="{ 'is-invalid': submitted && h.website_url.errors }"
+        />
+      </div>
+    </div>
+    <div class="form-group row mt-4">
+      <div class="col-12 col-sm-6">
+        <select
+          id="inputState"
+          class="form-control"
+          name="country"
+          formControlName="country"
+          [ngClass]="{ 'is-invalid': submitted && h.country.errors }"
+        >
+          <option value="">select your country</option>
+          <option *ngFor="let country of countries" value="{{ country }}">{{
+            country
+          }}</option>
+        </select>
+      </div>
+      <div class="col-12 col-sm-6">
+        <select
+          id="inputState"
+          class="form-control"
+          name="city"
+          formControlName="city"
+          [ngClass]="{ 'is-invalid': submitted && h.city.errors }"
+        >
+          <option value="">select your city</option>
+          <option *ngFor="let city of city" value="{{ city }}">{{
+            city
+          }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row mt-4">
+      <div class="col-12 col-sm-6">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Total Fund Raised"
+          name="fund_raised"
+          formControlName="fund_raised"
+          [ngClass]="{ 'is-invalid': submitted && h.fund_raised.errors }"
+        />
+      </div>
+      <div class="col-12 col-sm-6">
+        <select
+          id="inputState"
+          class="form-control"
+          name="company_type"
+          formControlName="company_type"
+          [ngClass]="{ 'is-invalid': submitted && h.company_type.errors }"
+        >
+          <option value="">select company type</option>
+          <option *ngFor="let type of companyType" value="{{ type }}">{{
+            type
+          }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row mt-4">
+      <div class="col-12 col-sm-6">
+        <label>Company Estb.</label>
+        <input
+          type="date"
+          class="form-control"
+          name="company_est"
+          formControlName="company_est"
+          [ngClass]="{ 'is-invalid': submitted && h.company_est.errors }"
+        />
+      </div>
+      <div class="col-12 col-sm-6">
+        <div>
+          <label>Are You Currently in Bussiness?</label>
+        </div>
+        <div class="form-check form-check-inline p-2">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="isWorking"
+            value="true"
+            checked
+            formControlName="isWorking"
+            [ngClass]="{ 'is-invalid': submitted && h.isWorking.errors }"
+          />
+          <label class="form-check-label">
+            Yes
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="isWorking"
+            value="false"
+            formControlName="isWorking"
+            [ngClass]="{ 'is-invalid': submitted && h.isWorking.errors }"
+          />
+          <label class="form-check-label">
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row mt-4">
+      <div class="col-12 col-sm-6">
+        <label>How many employee do you have?</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Eg: 40"
+          name="emp_count"
+          formControlName="emp_count"
+          [ngClass]="{ 'is-invalid': submitted && h.emp_count.errors }"
+        />
+      </div>
+      <div class="col-12 mt-4">
+        <label>About Your Company</label>
+        <textarea
+          class="form-control"
+          rows="6"
+          placeholder="Type here.."
+          name="company_description"
+          formControlName="company_description"
+          [ngClass]="{
+            'is-invalid': submitted && h.company_description.errors
+          }"
+        ></textarea>
+      </div>
+    </div>
+    <div class="form-group row mt-4">
+      <div class="col-12 col-sm-6 mt-4">
+        <div>
+          <label>Do you have any Co-founder?</label>
+        </div>
+        <div class="form-check form-check-inline p-2">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="cofounder"
+            value="true"
+            (click)="show($event.target.value)"
+          />
+          <label class="form-check-label">
+            Yes
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="cofounder"
+            checked
+            value="false"
+            (click)="show($event.target.value)"
+          />
+          <label class="form-check-label">
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="hideElement">
+      <div class="form-group row mt-4">
+        <div class="col-12 col-sm-6">
+          <h4>Co-founder Details:</h4>
+        </div>
+      </div>
+      <div class="form-group row mt-4">
+        <div class="col-12 col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="First Name"
+            name="co_first_name"
+            formControlName="co_first_name"
+            [ngClass]="{
+              'is-invalid': submitted && h.co_first_name.errors
+            }"
+          />
+        </div>
+        <div class="col-12 col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Last Name"
+            name="co_last_name"
+            formControlName="co_last_name"
+            [ngClass]="{
+              'is-invalid': submitted && h.co_last_name.errors
+            }"
+          />
+        </div>
+      </div>
+      <div class="form-group row mt-4">
+        <div class="col-12 col-sm-6">
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email"
+            name="co_email"
+            formControlName="co_email"
+            [ngClass]="{
+              'is-invalid': submitted && h.co_email.errors
+            }"
+          />
+        </div>
+        <div class="col-12 col-sm-6">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Phone"
+            name="co_phone"
+            formControlName="co_phone"
+            [ngClass]="{
+              'is-invalid': submitted && h.co_phone.errors
+            }"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-group row mt-4">
+      <div class="col-sm-10">
+        <label>Do you Comitted to following?</label>
+        <div class="form-check" *ngFor="let policy of policies; let i = index">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [value]="policy"
+            (change)="onCheckChange($event)"
+            id="check{{ i }}"
+          />
+          <label class="form-check-label" for="check{{ i }}">
+            {{ policy }}
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1"
+        >Please Estimate your Startup cost</label
+      >
+      <textarea
+        class="form-control"
+        placeholder="Type here.."
+        rows="4"
+        name="estimated_cost"
+        formControlName="estimated_cost"
+        [ngClass]="{
+          'is-invalid': submitted && h.estimated_cost.errors
+        }"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1"
+        >Revenue Stream(How will you make money)</label
+      >
+      <textarea
+        class="form-control"
+        placeholder="Type here.."
+        rows="4"
+        name="revenue_stream"
+        formControlName="revenue_stream"
+        [ngClass]="{
+          'is-invalid': submitted && h.revenue_stream.errors
+        }"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <div>
+        <label for="exampleFormControlTextarea1"
+          >Do you have any collabration?</label
+        >
+      </div>
+      <textarea
+        class="form-control"
+        placeholder="Type here.."
+        rows="3"
+        name="collabration"
+        formControlName="collabration"
+        [ngClass]="{
+          'is-invalid': submitted && h.collabration.errors
+        }"
+      ></textarea>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="tnc" />
+          <label class="form-check-label" for="tnc">
+            I have read <span class="text-primary">Terms & Conditions</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="float-right">
+      <button type="submit" class="btn btn-primary mb-2">
+        Submit Application
+      </button>
+    </div>
+    <div class="alert alert-success" *ngIf="success">
+      submitted successfully
+    </div>
+  </form>
+</div>
+{{ registerForm.controls.errors | json }}
